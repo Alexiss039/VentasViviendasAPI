@@ -15,11 +15,11 @@ namespace VentasViviendasAPI.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            // Configurar relaciones
             modelBuilder.Entity<Vivienda>()
-                .HasOne(v => v.TipoVivienda)
-                .WithMany(tv => tv.Viviendas)
-                .HasForeignKey(v => v.TipoViviendaId);
+              .HasOne(v => v.TipoVivienda)
+              .WithMany(tv => tv.Viviendas)
+              .HasForeignKey(v => v.TipoViviendaId)
+              .OnDelete(DeleteBehavior.Restrict);
 
             modelBuilder.Entity<Venta>()
                 .HasOne(v => v.Cliente)
